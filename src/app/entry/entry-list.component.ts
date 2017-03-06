@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Entry } from './entry';
 import { EntryService } from './entry.service';
@@ -18,8 +18,11 @@ import { EntryService } from './entry.service';
 
 export class EntryListComponent {
 	entries: Entry[] = [];
-	
-	constructor(private _entryService : EntryService){
-		this.entries = _entryService.getAll();
+
+	constructor(private _entryService : EntryService) {}
+
+	ngOnInit(){
+		this.entries = this._entryService.getAll();
 	}
+
 }

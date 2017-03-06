@@ -14,8 +14,10 @@ var EntryListComponent = (function () {
     function EntryListComponent(_entryService) {
         this._entryService = _entryService;
         this.entries = [];
-        this.entries = _entryService.getAll();
     }
+    EntryListComponent.prototype.ngOnInit = function () {
+        this.entries = this._entryService.getAll();
+    };
     EntryListComponent = __decorate([
         core_1.Component({
             selector: 'entry-list',
