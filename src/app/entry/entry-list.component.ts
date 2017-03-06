@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Entry } from './entry';
+import { EntryService } from './entry.service';
 
 
 @Component({
@@ -11,12 +12,14 @@ import { Entry } from './entry';
 				{{entry.tokens}}
 			</li>
 		</ul>
-	`
+	`,
+	providers: [EntryService]
 })
 
 export class EntryListComponent {
-	entries: Entry[] = [
-		{date: 'datum', tokens: 10, price: 20},
-		{date: 'datum', tokens: 5, price: 10}
-	]
+	entries: Entry[] = [];
+	
+	constructor(private _entryService : EntryService){
+		this.entries = _entryService.getAll();
+	}
 }

@@ -9,19 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var entry_service_1 = require('./entry.service');
 var EntryListComponent = (function () {
-    function EntryListComponent() {
-        this.entries = [
-            { date: 'datum', tokens: 10, price: 20 },
-            { date: 'datum', tokens: 5, price: 10 }
-        ];
+    function EntryListComponent(_entryService) {
+        this._entryService = _entryService;
+        this.entries = [];
+        this.entries = _entryService.getAll();
     }
     EntryListComponent = __decorate([
         core_1.Component({
             selector: 'entry-list',
-            template: "\n\t\t<ul>\n\t\t\t<li *ngFor=\"let entry of entries\">\n\t\t\t\t{{entry.tokens}}\n\t\t\t</li>\n\t\t</ul>\n\t"
+            template: "\n\t\t<ul>\n\t\t\t<li *ngFor=\"let entry of entries\">\n\t\t\t\t{{entry.tokens}}\n\t\t\t</li>\n\t\t</ul>\n\t",
+            providers: [entry_service_1.EntryService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [entry_service_1.EntryService])
     ], EntryListComponent);
     return EntryListComponent;
 }());
